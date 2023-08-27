@@ -560,7 +560,7 @@ namespace lgfx
       dst->pushImageAffineWithAA(matrix, _panel_sprite._panel_width, _panel_sprite._panel_height, _img, transp, getColorDepth(), _palette.img24());
     }
 
-    RGBColor* getPalette_impl(void) const override { return _palette.img24(); }
+    M5_RGBColor* getPalette_impl(void) const override { return _palette.img24(); }
 
   };
 
