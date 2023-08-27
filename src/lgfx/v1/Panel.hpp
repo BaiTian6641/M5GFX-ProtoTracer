@@ -158,7 +158,7 @@ namespace lgfx
     void effect(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, TFunc&& effector)
     {
       auto ye = y + h;
-      auto buf = (RGBColor*)alloca(w * sizeof(RGBColor));
+      auto buf = (M5_RGBColor*)alloca(w * sizeof(M5_RGBColor));
 #pragma GCC diagnostic push
 #if defined(__has_warning)
 #if __has_warning("-Wmaybe-uninitialized")
@@ -168,9 +168,9 @@ namespace lgfx
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #endif
       /// Not actually used uninitialized. Just grabbing a copy of the pointer before we start the loop that fills it.
-      pixelcopy_t pc_write(buf    ,_write_depth, RGBColor::depth, false);
+      pixelcopy_t pc_write(buf    ,_write_depth, M5_RGBColor::depth, false);
 #pragma GCC diagnostic pop
-      pixelcopy_t pc_read( nullptr, RGBColor::depth, _read_depth, false);
+      pixelcopy_t pc_read( nullptr, M5_RGBColor::depth, _read_depth, false);
       startWrite();
       do
       {
