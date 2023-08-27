@@ -942,4 +942,4 @@ namespace lgfx
  }
 }
 
-using RGBColor = lgfx::bgr888_t;
+using M5_RGBColor = lgfx::bgr888_t;
