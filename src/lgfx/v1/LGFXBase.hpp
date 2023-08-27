@@ -285,7 +285,7 @@ namespace lgfx
     LGFX_INLINE   int32_t height(void) const { return _panel->height(); }
     LGFX_INLINE   bool hasPalette (void) const { return _palette_count; }
     LGFX_INLINE   uint32_t getPaletteCount(void) const { return _palette_count; }
-    LGFX_INLINE   M5_RGBColor*     getPalette(void) const { return getPalette_impl(); }
+    LGFX_INLINE   M5_M5_RGBColor*     getPalette(void) const { return getPalette_impl(); }
     LGFX_INLINE   bool isReadable(void) const { return _panel->isReadable(); }
     LGFX_INLINE   bool isEPD(void) const { return _panel->isEpd(); }
     LGFX_INLINE   bool getSwapBytes(void) const { return _swapBytes; }
@@ -553,9 +553,9 @@ namespace lgfx
     }
 
     /// read RGB888 24bit color
-    RGBColor readPixelRGB(int32_t x, int32_t y)
+    M5_RGBColor readPixelRGB(int32_t x, int32_t y)
     {
-      RGBColor data[1];
+      M5_RGBColor data[1];
       if (x < 0 || x >= width() || y < 0 || y >= height()) return data[0];
 
       pixelcopy_t p(nullptr, bgr888_t::depth, _read_conv.depth, false, getPalette());
@@ -567,7 +567,7 @@ namespace lgfx
 
     LGFX_INLINE
     void readRectRGB( int32_t x, int32_t y, int32_t w, int32_t h, uint8_t* data) { readRectRGB(x, y, w, h, (bgr888_t*)data); }
-    void readRectRGB( int32_t x, int32_t y, int32_t w, int32_t h, RGBColor* data)
+    void readRectRGB( int32_t x, int32_t y, int32_t w, int32_t h, M5_RGBColor* data)
     {
       pixelcopy_t p(nullptr, bgr888_t::depth, _read_conv.depth, false, getPalette());
       read_rect(x, y, w, h, data, &p);
@@ -877,7 +877,7 @@ namespace lgfx
 
   protected:
 
-    virtual RGBColor* getPalette_impl(void) const { return nullptr; }
+    virtual M5_RGBColor* getPalette_impl(void) const { return nullptr; }
 
     IPanel* _panel = nullptr;
 
