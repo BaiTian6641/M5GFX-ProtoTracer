@@ -285,7 +285,7 @@ namespace lgfx
     LGFX_INLINE   int32_t height(void) const { return _panel->height(); }
     LGFX_INLINE   bool hasPalette (void) const { return _palette_count; }
     LGFX_INLINE   uint32_t getPaletteCount(void) const { return _palette_count; }
-    LGFX_INLINE   RGBColor*     getPalette(void) const { return getPalette_impl(); }
+    LGFX_INLINE   M5_RGBColor*     getPalette(void) const { return getPalette_impl(); }
     LGFX_INLINE   bool isReadable(void) const { return _panel->isReadable(); }
     LGFX_INLINE   bool isEPD(void) const { return _panel->isEpd(); }
     LGFX_INLINE   bool getSwapBytes(void) const { return _swapBytes; }
